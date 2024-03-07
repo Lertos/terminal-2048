@@ -7,6 +7,20 @@ StartGame();
 
 void StartGame()
 {
+    SetupGame();
+
+    bool quit = false;
+
+    while (!quit)
+    {
+        UpdateDisplay();
+        HandleInput();
+        InsertTwo();
+    }
+}
+
+void SetupGame()
+{
     for (int i = 0; i < grid.GetLength(0); i++)
     {
         for (int j = 0; j < grid.GetLength(1); j++)
@@ -15,13 +29,9 @@ void StartGame()
         }
     }
 
-    bool quit = false;
-
-    while (!quit)
-    {
-        UpdateDisplay();
-        HandleInput();
-    }
+    //Insert 2 random "2"s
+    InsertTwo();
+    InsertTwo();
 }
 
 void UpdateDisplay()
@@ -118,4 +128,10 @@ void HandleRightMove()
 void HandleDownMove()
 {
 
+}
+
+void InsertTwo()
+{
+    //TODO: Create a list and store all of the tuples of "0" cells.
+    //  Then make a random number and pick that cell from the list and update the value to two.
 }
