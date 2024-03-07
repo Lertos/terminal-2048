@@ -23,6 +23,9 @@ void StartGame()
 
     while (!quit)
     {
+        if (checkGameOver)
+            CheckGameOver();
+
         UpdateDisplay();
 
         validInput = HandleInput();
@@ -111,6 +114,8 @@ bool HandleInput()
 
 void UpdateGrid(Enums.DIR direction)
 {
+    if (gameOver) return;
+
     switch (direction)
     {
         case Enums.DIR.LEFT: HandleLeftMove(); break;
@@ -118,9 +123,6 @@ void UpdateGrid(Enums.DIR direction)
         case Enums.DIR.RIGHT: HandleRightMove(); break;
         case Enums.DIR.DOWN: HandleDownMove(); break;
     }
-
-    if (checkGameOver)
-        CheckGameOver();
 }
 
 void HandleLeftMove()
@@ -174,7 +176,6 @@ void HandleLeftMove()
         }
     }
 }
-
 
 void HandleUpMove()
 {
@@ -355,7 +356,7 @@ void InsertTwo()
         checkGameOver = true;
         return;
     }
-    else if (checkGameOver)
+    else
     {
         //Reset the flag
         checkGameOver = false;
