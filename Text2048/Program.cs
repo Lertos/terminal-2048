@@ -57,13 +57,17 @@ bool HandleInput()
 
     switch (ch)
     {
-        case ConsoleKey.UpArrow:
-            break;
         case ConsoleKey.LeftArrow:
+            UpdateGrid(Enums.DIR.LEFT);
+            break;
+        case ConsoleKey.UpArrow:
+            UpdateGrid(Enums.DIR.UP);
             break;
         case ConsoleKey.RightArrow:
+            UpdateGrid(Enums.DIR.RIGHT);
             break;
         case ConsoleKey.DownArrow:
+            UpdateGrid(Enums.DIR.DOWN);
             break;
         //Restart the game
         case ConsoleKey.R:
@@ -81,4 +85,37 @@ bool HandleInput()
     }
 
     return true;
+}
+
+void UpdateGrid(Enums.DIR direction)
+{
+    switch (direction)
+    {
+        case Enums.DIR.LEFT: HandleLeftMove(); break;
+        case Enums.DIR.UP: HandleUpMove(); break;
+        case Enums.DIR.RIGHT: HandleRightMove(); break;
+        case Enums.DIR.DOWN: HandleDownMove(); break;
+    }
+
+    //TODO: Check for win/loss
+}
+
+void HandleLeftMove()
+{
+    
+}
+
+void HandleUpMove()
+{
+
+}
+
+void HandleRightMove()
+{
+
+}
+
+void HandleDownMove()
+{
+
 }
