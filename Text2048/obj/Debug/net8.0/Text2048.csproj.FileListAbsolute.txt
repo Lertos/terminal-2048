@@ -1,0 +1,14 @@
+C:\Users\Dylan\source\repos\Text2048\Text2048\bin\Debug\net8.0\Text2048.exe
+C:\Users\Dylan\source\repos\Text2048\Text2048\bin\Debug\net8.0\Text2048.deps.json
+C:\Users\Dylan\source\repos\Text2048\Text2048\bin\Debug\net8.0\Text2048.runtimeconfig.json
+C:\Users\Dylan\source\repos\Text2048\Text2048\bin\Debug\net8.0\Text2048.dll
+C:\Users\Dylan\source\repos\Text2048\Text2048\bin\Debug\net8.0\Text2048.pdb
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.AssemblyInfoInputs.cache
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.AssemblyInfo.cs
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.csproj.CoreCompileInputs.cache
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.dll
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\refint\Text2048.dll
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.pdb
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.genruntimeconfig.cache
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\ref\Text2048.dll
