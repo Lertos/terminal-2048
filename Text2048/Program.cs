@@ -19,12 +19,15 @@ void StartGame()
     gameOver = false;
     checkGameOver = false;
 
+    bool validInput;
+
     while (!quit)
     {
         UpdateDisplay();
-        HandleInput();
 
-        if (!gameOver)
+        validInput = HandleInput();
+
+        if (!gameOver && validInput)
             InsertTwo();
     }
 
