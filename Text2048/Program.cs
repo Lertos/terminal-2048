@@ -34,17 +34,17 @@ void UpdateDisplay()
         for (int j = 0; j < grid.GetLength(1); j++)
         {
             if (j == grid.GetLength(1) - 1)
-                Console.Write(grid[i, j]);
+                Console.Write(grid[i, j] == 0 ? "--" : grid[i, j]);
             else
-                Console.Write(grid[i, j].ToString().PadRight(6));
+                Console.Write(grid[i, j] == 0 ? "--".PadRight(6) : grid[i, j].ToString().PadRight(6));
         }
         Console.Write("    ]");
         Console.WriteLine();
-
     }
 
     if (warningMessage != "")
     {
+        Console.WriteLine();
         Console.WriteLine(warningMessage);
             
         warningMessage = "";
@@ -65,14 +65,15 @@ bool HandleInput()
             break;
         case ConsoleKey.DownArrow:
             break;
+        //Restart the game
         case ConsoleKey.R:
-            //Restart the game
             Console.WriteLine("Restarting");
             break;
+        //Quit the application
         case ConsoleKey.Q:
-            //Quit the application
             Environment.Exit(0);
             break;
+        //Any other key war pressed
         default:
             warningMessage = "That key was not valid. Please press any arrow key, WASD, (q)uit, or (r)estart.";
 
