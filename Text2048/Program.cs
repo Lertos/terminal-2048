@@ -1,4 +1,6 @@
 ﻿
+bool gameOver;
+bool checkGameOver;
 string warningMessage = "";
 
 int[,] grid = new int[4, 4];
@@ -11,11 +13,16 @@ void StartGame()
 
     bool quit = false;
 
+    gameOver = false;
+    checkGameOver = false;
+
     while (!quit)
     {
         UpdateDisplay();
         HandleInput();
-        InsertTwo();
+
+        if (!gameOver)
+            InsertTwo();
     }
 }
 
@@ -24,9 +31,7 @@ void SetupGame()
     for (int i = 0; i < grid.GetLength(0); i++)
     {
         for (int j = 0; j < grid.GetLength(1); j++)
-        {
             grid[i, j] = 0;
-        }
     }
 
     //Insert 2 random "2"s
@@ -107,7 +112,8 @@ void UpdateGrid(Enums.DIR direction)
         case Enums.DIR.DOWN: HandleDownMove(); break;
     }
 
-    //TODO: Check for win/loss
+    if (GetEmptyCells().Count == 0)
+        CheckGameOver();
 }
 
 void HandleLeftMove()
@@ -132,6 +138,42 @@ void HandleDownMove()
 
 void InsertTwo()
 {
-    //TODO: Create a list and store all of the tuples of "0" cells.
-    //  Then make a random number and pick that cell from the list and update the value to two.
+    List<(int, int)> emptyCells = GetEmptyCells();
+
+    if (emptyCells.Count == 0)
+    {
+        checkGameOver = true;
+        return;
+    }
+
+    Random random = new();
+
+    int index = random.Next(0, emptyCells.Count());
+    (int, int) cell = emptyCells[index];
+
+    grid[cell.Item1, cell.Item2] = 2;
+}
+
+List<(int, int)> GetEmptyCells()
+{
+    List<(int, int)> emptyCells = new();
+
+    for (int i = 0; i < grid.GetLength(0); i++)
+    {
+        for (int j = 0; j < grid.GetLength(1); j++)
+        {
+            if (grid[i, j] == 0)
+                emptyCells.Add((i, j));
+        }
+    }
+
+    return emptyCells;
+}
+
+void CheckGameOver()
+{
+
+
+    //Reset the flag
+    checkGameOver = false;
 }
