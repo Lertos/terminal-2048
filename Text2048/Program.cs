@@ -1,8 +1,10 @@
 ﻿
+bool quit;
+bool hasWon;
 bool gameOver;
 bool checkGameOver;
 
-string warningMessage = "";
+string belowMessage = "";
 
 int[,] grid = new int[4, 4];
 
@@ -12,8 +14,8 @@ void StartGame()
 {
     SetupGame();
 
-    bool quit = false;
-
+    quit = false;
+    hasWon = false;
     gameOver = false;
     checkGameOver = false;
 
@@ -25,6 +27,8 @@ void StartGame()
         if (!gameOver)
             InsertTwo();
     }
+
+    StartGame();
 }
 
 void SetupGame()
@@ -58,12 +62,12 @@ void UpdateDisplay()
         Console.WriteLine();
     }
 
-    if (warningMessage != "")
+    if (belowMessage != "")
     {
         Console.WriteLine();
-        Console.WriteLine(warningMessage);
+        Console.WriteLine(belowMessage);
             
-        warningMessage = "";
+        belowMessage = "";
     }
 }
 
@@ -87,7 +91,7 @@ bool HandleInput()
             break;
         //Restart the game
         case ConsoleKey.R:
-            Console.WriteLine("Restarting");
+            quit = true;
             break;
         //Quit the application
         case ConsoleKey.Q:
@@ -95,7 +99,7 @@ bool HandleInput()
             break;
         //Any other key war pressed
         default:
-            warningMessage = "That key was not valid. Please press any arrow key, WASD, (q)uit, or (r)estart.";
+            belowMessage = "That key was not valid. Please press any arrow key, WASD, (q)uit, or (r)estart.";
 
             return false;
     }
@@ -173,6 +177,13 @@ List<(int, int)> GetEmptyCells()
 
 void CheckGameOver()
 {
+    //TODO: Logic for game over
+    if (1 == 1)
+    {
+        hasWon = false;
+
+        belowMessage = "You have lost. Please press 'r' to restart, or 'q' to quit.";
+    }
 
 
     //Reset the flag
