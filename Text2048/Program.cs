@@ -39,7 +39,9 @@ void SetupGame()
     for (int i = 0; i < grid.GetLength(0); i++)
     {
         for (int j = 0; j < grid.GetLength(1); j++)
+        {
             grid[i, j] = 0;
+        }
     }
 
     //Insert 2 random "2"s
@@ -54,14 +56,11 @@ void UpdateDisplay()
     for (int i = 0; i < grid.GetLength(0); i++)
     {
         Console.Write("[    ");
+        
         for (int j = 0; j < grid.GetLength(1); j++)
-        {
-            if (j == grid.GetLength(1) - 1)
-                Console.Write(grid[i, j] == 0 ? "--" : grid[i, j]);
-            else
-                Console.Write(grid[i, j] == 0 ? "--".PadRight(6) : grid[i, j].ToString().PadRight(6));
-        }
-        Console.Write("    ]");
+            Console.Write(grid[i, j] == 0 ? "--".PadRight(6) : grid[i, j].ToString().PadRight(6));
+
+        Console.Write("]");
         Console.WriteLine();
     }
 
