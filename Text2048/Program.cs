@@ -1,6 +1,7 @@
 ﻿
 bool gameOver;
 bool checkGameOver;
+
 string warningMessage = "";
 
 int[,] grid = new int[4, 4];
@@ -112,7 +113,7 @@ void UpdateGrid(Enums.DIR direction)
         case Enums.DIR.DOWN: HandleDownMove(); break;
     }
 
-    if (GetEmptyCells().Count == 0)
+    if (checkGameOver)
         CheckGameOver();
 }
 
