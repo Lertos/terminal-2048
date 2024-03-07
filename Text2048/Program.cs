@@ -179,7 +179,54 @@ void HandleLeftMove()
 
 void HandleUpMove()
 {
+    for (int i = 0; i < grid.GetLength(0); i++)
+    {
+        int index = 1; //No need to check index 0 as it cannot move nor combine
 
+        while (index < grid.GetLength(1))
+        {
+            int currentValue = grid[index, i];
+
+            //Skip empty cells
+            if (currentValue == 0) { index++; continue; }
+
+            //Reset the current column so we can move the value around
+            grid[index, i] = 0;
+
+            //Iterate over possible slots to move the value to
+            int currentCol = index - 1;
+
+            while (currentCol >= 0)
+            {
+                //Check if the neighbor is empty
+                if (grid[currentCol, i] == 0)
+                {
+                    //If it is empty but is the last slot to move to, just move it
+                    if (currentCol == 0)
+                    {
+                        grid[currentCol, i] = currentValue;
+                        break;
+                    }
+                }
+                //If it has a value, can it combine with the value
+                else if (currentValue == grid[currentCol, i])
+                {
+                    grid[currentCol, i] = CombineCells(grid[currentCol, i], currentValue);
+                    break;
+                }
+                //If it can't move nor can combine, just place it in the current column
+                else
+                {
+                    grid[currentCol + 1, i] = currentValue;
+                    break;
+                }
+
+                currentCol--;
+            }
+
+            index++;
+        }
+    }
 }
 
 void HandleRightMove()
@@ -236,7 +283,54 @@ void HandleRightMove()
 
 void HandleDownMove()
 {
+    for (int i = 0; i < grid.GetLength(0); i++)
+    {
+        int index = grid.GetLength(1) - 2; //No need to check the last index as it cannot move nor combine
 
+        while (index >= 0)
+        {
+            int currentValue = grid[index, i];
+
+            //Skip empty cells
+            if (currentValue == 0) { index--; continue; }
+
+            //Reset the current column so we can move the value around
+            grid[index, i] = 0;
+
+            //Iterate over possible slots to move the value to
+            int currentCol = index + 1;
+
+            while (currentCol < grid.GetLength(1))
+            {
+                //Check if the neighbor is empty
+                if (grid[currentCol, i] == 0)
+                {
+                    //If it is empty but is the last slot to move to, just move it
+                    if (currentCol == grid.GetLength(1) - 1)
+                    {
+                        grid[currentCol, i] = currentValue;
+                        break;
+                    }
+                }
+                //If it has a value, can it combine with the value
+                else if (currentValue == grid[currentCol, i])
+                {
+                    grid[currentCol, i] = CombineCells(grid[currentCol, i], currentValue);
+                    break;
+                }
+                //If it can't move nor can combine, just place it in the current column
+                else
+                {
+                    grid[currentCol - 1, i] = currentValue;
+                    break;
+                }
+
+                currentCol++;
+            }
+
+            index--;
+        }
+    }
 }
 
 int CombineCells(int cellValue, int currentValue)
