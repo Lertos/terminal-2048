@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Text2048")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa67ce3f1625f0aa980b49ce6d1d5c8235ffa49d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a34e2156d77c02f70d9b4864fb2176efd69af52b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Text2048")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Text2048")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

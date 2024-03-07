@@ -1,7 +1,7 @@
 ﻿
 bool quit;
-bool hasWon;
 bool gameOver;
+bool lastChance;
 bool checkGameOver;
 
 string belowMessage = "";
@@ -12,12 +12,12 @@ StartGame();
 
 void StartGame()
 {
-    SetupGame();
-
     quit = false;
-    hasWon = false;
     gameOver = false;
+    lastChance = false;
     checkGameOver = false;
+
+    SetupGame();
 
     bool validInput;
 
@@ -338,7 +338,10 @@ int CombineCells(int cellValue, int currentValue)
 
     //Check for the win condition
     if (newValue == 2048)
-        hasWon = true;
+    {
+        belowMessage = "---You won---\n\n Press 'r' to start a new game, or 'q' to quit";
+        gameOver = true;
+    }
 
     return newValue;
 }
@@ -351,6 +354,11 @@ void InsertTwo()
     {
         checkGameOver = true;
         return;
+    }
+    else if (checkGameOver)
+    {
+        //Reset the flag
+        checkGameOver = false;
     }
 
     Random random = new();
@@ -379,15 +387,15 @@ List<(int, int)> GetEmptyCells()
 
 void CheckGameOver()
 {
-    //TODO: Logic for game over
-    if (1 == 1)
+    //If they already had a full board and still have no empty spaces, they lose
+    if (lastChance)
     {
-        hasWon = false;
-
-        belowMessage = "You have lost. Please press 'r' to restart, or 'q' to quit.";
+        belowMessage = "---You lost---\n\n Press 'r' to start a new game, or 'q' to quit";
+        gameOver = true;
     }
-
-
-    //Reset the flag
-    checkGameOver = false;
+    //When they have no empty spaces, they still have one more try to make a move
+    else
+    {
+        lastChance = true;
+    }
 }
