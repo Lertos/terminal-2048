@@ -12,3 +12,4 @@ C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\refint\Text2048.d
 C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.pdb
 C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.genruntimeconfig.cache
 C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\ref\Text2048.dll
+C:\Users\Dylan\source\repos\Text2048\Text2048\obj\Debug\net8.0\Text2048.sourcelink.json

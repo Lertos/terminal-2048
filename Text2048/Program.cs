@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-
+﻿
 string warningMessage = "";
 
 int[,] grid = new int[4, 4];
@@ -9,6 +7,14 @@ StartGame();
 
 void StartGame()
 {
+    for (int i = 0; i < grid.GetLength(0); i++)
+    {
+        for (int j = 0; j < grid.GetLength(1); j++)
+        {
+            grid[i, j] = 0;
+        }
+    }
+
     bool quit = false;
 
     while (!quit)
@@ -20,26 +26,44 @@ void StartGame()
 
 void UpdateDisplay()
 {
+    Console.Clear();
 
+    for (int i = 0; i < grid.GetLength(0); i++)
+    {
+        Console.Write("[    ");
+        for (int j = 0; j < grid.GetLength(1); j++)
+        {
+            if (j == grid.GetLength(1) - 1)
+                Console.Write(grid[i, j]);
+            else
+                Console.Write(grid[i, j].ToString().PadRight(6));
+        }
+        Console.Write("    ]");
+        Console.WriteLine();
+
+    }
+
+    if (warningMessage != "")
+    {
+        Console.WriteLine(warningMessage);
+            
+        warningMessage = "";
+    }
 }
 
 bool HandleInput()
 {
-    var ch = Console.ReadKey(false).Key;
+    var ch = Console.ReadKey(true).Key;
 
     switch (ch)
     {
         case ConsoleKey.UpArrow:
-            Console.WriteLine("Up");
             break;
         case ConsoleKey.LeftArrow:
-            Console.WriteLine("Left");
             break;
         case ConsoleKey.RightArrow:
-            Console.WriteLine("Right");
             break;
         case ConsoleKey.DownArrow:
-            Console.WriteLine("Down");
             break;
         case ConsoleKey.R:
             //Restart the game
@@ -50,7 +74,7 @@ bool HandleInput()
             Environment.Exit(0);
             break;
         default:
-            warningMessage = "";
+            warningMessage = "That key was not valid. Please press any arrow key, WASD, (q)uit, or (r)estart.";
 
             return false;
     }
